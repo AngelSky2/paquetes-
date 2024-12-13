@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Paquete</title>
+</head>
+<body>
+    <h1>Editar Paquete</h1>
+    <form method="POST">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" name="descripcion" value="{{ paquete[1] }}" required><br>
+
+        <label for="cliente_id">Cliente:</label>
+        <select name="cliente_id" required>
+            {% for cliente in clientes %}
+                <option value="{{ cliente[0] }}" {% if cliente[0] == paquete[2] %}selected{% endif %}>{{ cliente[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="estado_id">Estado:</label>
+        <select name="estado_id" required>
+            {% for estado in estados %}
+                <option value="{{ estado[0] }}" {% if estado[0] == paquete[3] %}selected{% endif %}>{{ estado[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Actualizar</button>
+    </form>
+</body>
+</html>

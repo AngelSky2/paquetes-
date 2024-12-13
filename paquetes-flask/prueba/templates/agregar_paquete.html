@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Paquete</title>
+</head>
+<body>
+    <h1>Agregar Paquete</h1>
+    <form method="POST">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" name="descripcion" required><br>
+
+        <label for="cliente_id">Cliente:</label>
+        <select name="cliente_id" required>
+            {% for cliente in clientes %}
+                <option value="{{ cliente[0] }}">{{ cliente[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="estado_id">Estado:</label>
+        <select name="estado_id" required>
+            {% for estado in estados %}
+                <option value="{{ estado[0] }}">{{ estado[1] }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

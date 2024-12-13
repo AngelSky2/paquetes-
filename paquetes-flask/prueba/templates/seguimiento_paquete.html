@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Paquete</title>
+</head>
+<body>
+    <h1>Seguimiento del Paquete</h1>
+    <h3>Paquete: {{ paquete[1] }}</h3>
+    <h4>Estado Actual: {{ paquete[3] }}</h4>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Movimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movimiento in movimientos %}
+                <tr>
+                    <td>{{ movimiento[2] }}</td>
+                    <td>{{ movimiento[3] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('index') }}">Volver</a>
+</body>
+</html>

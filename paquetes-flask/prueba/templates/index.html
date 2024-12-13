@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Paquetes</title>
+</head>
+<body>
+    <h1>Listado de Paquetes</h1>
+    <a href="{{ url_for('agregar_paquete') }}">Agregar Nuevo Paquete</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th>Cliente</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paquete in paquetes %}
+                <tr>
+                    <td>{{ paquete[0] }}</td>
+                    <td>{{ paquete[1] }}</td>
+                    <td>{{ paquete[2] }}</td>
+                    <td>{{ paquete[3] }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_paquete', id=paquete[0]) }}">Editar</a> |
+                        <a href="{{ url_for('eliminar_paquete', id=paquete[0]) }}">Eliminar</a> |
+                        <a href="{{ url_for('seguimiento_paquete', id=paquete[0]) }}">Ver Seguimiento</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Paquetes</title>
+</head>
+<body>
+    <h1>Lista de Paquetes</h1>
+    <a href="{{ url_for('nuevo_paquete') }}">Agregar nuevo paquete</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Estado Actual</th>
+                <th>Último Movimiento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paquete in paquetes %}
+                <tr>
+                    <td>{{ paquete.id }}</td>
+                    <td>{{ paquete.nombre }}</td>
+                    <td>{{ paquete.direccion }}</td>
+                    <td>{{ paquete.estado }}</td>
+                    <td>
+                        {% if paquete.ultimo_movimiento %}
+                            {{ paquete.ultimo_movimiento.estado_actual }} ({{ paquete.ultimo_movimiento.fecha.strftime('%Y-%m-%d %H:%M:%S') }})
+                        {% else %}
+                            No hay movimientos
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('actualizar_estado', id=paquete.id) }}">Actualizar Estado</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

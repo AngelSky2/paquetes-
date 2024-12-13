@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Estado</title>
+</head>
+<body>
+    <h1>Actualizar Estado del Paquete</h1>
+    <form method="POST">
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="En tránsito" {% if paquete.estado == 'En tránsito' %}selected{% endif %}>En tránsito</option>
+            <option value="Entregado" {% if paquete.estado == 'Entregado' %}selected{% endif %}>Entregado</option>
+            <option value="En almacén" {% if paquete.estado == 'En almacén' %}selected{% endif %}>En almacén</option>
+        </select><br><br>
+        <button type="submit">Actualizar Estado</button>
+    </form>
+    <a href="{{ url_for('index') }}">Volver a la lista</a>
+</body>
+</html>
